@@ -1,233 +1,453 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>여주드론 | 디지털 명함</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>여주드론 | 윤대헌 대표 디지털 명함</title>
+  <meta name="description" content="여주 대표 농업용 드론 토탈 솔루션 | 방제 · 판매 · 교육 · 정비" />
+  <meta name="theme-color" content="#164132" />
 
-  <!-- iOS 홈화면 -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="여주드론">
-  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+  <!-- Open Graph (카톡/메신저 공유 미리보기) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="여주드론 | 윤대헌 대표 디지털 명함" />
+  <meta property="og:description" content="여주 대표 농업용 드론 토탈 솔루션 | 방제 · 판매 · 교육 · 정비" />
+  <!-- og:image는 GitHub Pages에 올린 뒤, 아래 JS의 shareImageUrl을 실제 이미지 경로로 바꾸면 더 예쁘게 뜸 -->
+  <meta property="og:image" content="" />
 
-  <!-- 기본 스타일 -->
   <style>
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --primary: #0f62fe;
-      --dark: #111;
-      --gray: #666;
+    :root{
+      --bg: #0e1412;
+      --card: rgba(255,255,255,0.08);
+      --card2: rgba(255,255,255,0.12);
+      --text: #eef5f1;
+      --muted: rgba(238,245,241,0.72);
+      --line: rgba(255,255,255,0.10);
+      --green1:#1e5b43;
+      --green2:#0f3b2b;
+      --accent:#bfe6d4;
+      --btn:#ffffff;
+      --btnText:#0e1412;
+      --yt:#ff2d2d;
+      --shadow: 0 18px 50px rgba(0,0,0,0.45);
       --radius: 18px;
     }
 
-    * {
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-                   "Noto Sans KR", sans-serif;
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100svh;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(900px 900px at 20% 10%, rgba(30,91,67,0.55) 0%, rgba(14,20,18,0) 55%),
+        radial-gradient(900px 900px at 85% 30%, rgba(15,59,43,0.60) 0%, rgba(14,20,18,0) 60%),
+        linear-gradient(180deg, #0b100e 0%, #0e1412 45%, #0b100e 100%);
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      padding:22px 14px 40px;
     }
 
-    body {
-      margin: 0;
-      background: linear-gradient(180deg, #eef3ff, #f7f9ff);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 24px 12px 60px;
+    .wrap{
+      width:min(520px, 100%);
     }
 
-    .app {
-      width: 100%;
-      max-width: 420px;
+    .topNote{
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+      margin:6px 0 14px;
+      letter-spacing:0.2px;
     }
 
-    .profile {
-      background: var(--card);
+    .card{
       border-radius: var(--radius);
-      padding: 26px 22px 24px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-      text-align: center;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.05) 100%);
+      backdrop-filter: blur(10px);
     }
 
-    .logo {
-      width: 88px;
-      height: 88px;
-      border-radius: 22px;
-      margin: 0 auto 16px;
-      background: linear-gradient(135deg, #0f62fe, #3c8cff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 28px;
-      font-weight: 800;
+    .header{
+      padding:22px 18px 18px;
+      background: linear-gradient(135deg, var(--green1) 0%, var(--green2) 55%, #0b2a1f 100%);
+      position:relative;
     }
 
-    h1 {
-      margin: 6px 0 4px;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--dark);
-    }
-
-    .role {
-      font-size: 14px;
-      color: var(--gray);
-      margin-bottom: 14px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #eef3ff;
-      color: var(--primary);
-      padding: 6px 12px;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
       border-radius: 999px;
-      font-size: 12px;
-      margin: 4px 4px 14px;
-      font-weight: 600;
+      background: rgba(255,255,255,0.14);
+      border:1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.92);
+      font-weight:700;
+      font-size:12px;
+      letter-spacing:0.2px;
     }
 
-    .buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 10px;
+    .badge .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: #a9f0d3;
+      box-shadow: 0 0 18px rgba(169,240,211,0.75);
     }
 
-    .btn {
-      border: none;
+    .brand{
+      margin-top:14px;
+      font-size:26px;
+      font-weight:900;
+      letter-spacing:-0.6px;
+      line-height:1.1;
+      text-align:center;
+    }
+
+    .tagline{
+      margin-top:8px;
+      text-align:center;
+      font-size:13px;
+      color: rgba(238,245,241,0.90);
+      letter-spacing:0.3px;
+      font-weight:700;
+    }
+
+    .subtag{
+      margin-top:6px;
+      text-align:center;
+      font-size:12px;
+      color: rgba(238,245,241,0.76);
+      letter-spacing:0.2px;
+      font-weight:600;
+    }
+
+    .content{
+      padding:18px 18px 16px;
+    }
+
+    .person{
+      text-align:center;
+      padding:14px 12px 8px;
+    }
+
+    .name{
+      font-size:24px;
+      font-weight:900;
+      letter-spacing:-0.5px;
+    }
+
+    .role{
+      margin-top:4px;
+      font-size:14px;
+      font-weight:800;
+      color: var(--accent);
+    }
+
+    .services{
+      margin-top:10px;
+      display:inline-block;
+      padding:10px 12px;
       border-radius: 14px;
-      padding: 16px 10px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: #f1f4ff;
-      color: var(--primary);
-      transition: transform .15s ease, box-shadow .15s ease;
+      background: rgba(255,255,255,0.07);
+      border:1px solid rgba(255,255,255,0.10);
+      color: rgba(238,245,241,0.92);
+      font-weight:800;
+      letter-spacing:0.2px;
+      font-size:13px;
+      line-height:1.4;
+    }
+    .services strong{ color:#d7fff0; }
+
+    .btnGrid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
     }
 
-    .btn:active {
-      transform: scale(0.97);
+    .btn{
+      appearance:none;
+      border:none;
+      border-radius: 16px;
+      padding:14px 12px;
+      background: rgba(255,255,255,0.92);
+      color: #0e1412;
+      font-weight:900;
+      font-size:14px;
+      letter-spacing:-0.2px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      cursor:pointer;
+      transition: transform .08s ease, filter .12s ease, background .12s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .btn.primary {
-      background: var(--primary);
-      color: #fff;
-      grid-column: span 2;
-      padding: 18px 10px;
-      font-size: 16px;
+    .btn:active{ transform: scale(0.98); filter: brightness(0.95); }
+
+    .btn.secondary{
+      background: rgba(255,255,255,0.14);
+      color: rgba(238,245,241,0.95);
+      border:1px solid rgba(255,255,255,0.16);
     }
 
-    .section {
-      margin-top: 18px;
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 18px 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    .btn .icon{
+      width:20px; height:20px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      line-height:1;
     }
 
-    .section h2 {
-      font-size: 15px;
-      margin: 0 0 10px;
-      color: var(--dark);
+    .btn.youtube{
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(255,45,45,0.95) 0%, rgba(255,45,45,0.82) 60%, rgba(255,45,45,0.95) 100%);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 10px 24px rgba(255,45,45,0.22);
     }
 
-    .info {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.6;
+    .info{
+      margin-top:14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding-top:14px;
+      color: rgba(238,245,241,0.90);
+      font-size:13px;
+      line-height:1.55;
     }
 
-    .footer {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: #888;
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:6px 0;
+    }
+    .row .k{
+      width:18px;
+      text-align:center;
+      opacity:0.95;
+      flex:0 0 auto;
+    }
+    .row .v{
+      flex:1 1 auto;
+      word-break: keep-all;
+    }
+
+    .tools{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .toolBtn{
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.10);
+      color: rgba(238,245,241,0.92);
+      font-weight:800;
+      font-size:12px;
+      cursor:pointer;
+      transition: transform .08s ease, filter .12s ease;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .toolBtn:active{ transform:scale(0.98); filter:brightness(0.95); }
+
+    .foot{
+      margin-top:14px;
+      text-align:center;
+      color: rgba(238,245,241,0.58);
+      font-size:11px;
+      letter-spacing:0.2px;
+      padding: 0 10px 14px;
+    }
+
+    /* 작은 화면에서 가독성 유지 */
+    @media (max-width: 360px){
+      .brand{ font-size:24px; }
+      .name{ font-size:22px; }
+      .btn{ font-size:13px; padding:13px 10px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="app">
+  <div class="wrap">
+    <div class="topNote">여주드론 공식 디지털 명함 · 버튼을 누르면 바로 연결됩니다</div>
 
-    <!-- 프로필 카드 -->
-    <div class="profile">
-      <div class="logo">YJ</div>
+    <main class="card" role="main" aria-label="여주드론 디지털 명함">
+      <section class="header">
+        <div class="badge" aria-label="공식 명함 배지">
+          <span class="dot" aria-hidden="true"></span>
+          OFFICIAL DIGITAL CARD
+        </div>
 
-      <h1>윤대헌</h1>
-      <div class="role">대표 · 여주드론</div>
+        <div class="brand">여주드론</div>
+        <div class="tagline">여주 대표 농업용 드론 토탈 솔루션</div>
+        <div class="subtag">Agricultural Drone Total Solution</div>
+      </section>
 
-      <div class="tag">🚁 드론 방제</div>
-      <div class="tag">📡 드론 판매</div>
-      <div class="tag">🛠 드론 정비</div>
+      <section class="content">
+        <div class="person">
+          <div class="name">윤대헌</div>
+          <div class="role">대표</div>
+          <div class="services">
+            <strong>농업용 드론</strong><br/>
+            방제 · 판매 · 교육 · 정비
+          </div>
+        </div>
 
-      <div class="buttons">
-        <button class="btn primary" onclick="call()">
-          📞 전화 바로걸기
-        </button>
+        <div class="btnGrid" aria-label="원터치 연결 버튼">
+          <button class="btn" type="button" id="btnCall" aria-label="전화하기">
+            <span class="icon" aria-hidden="true">📞</span>전화하기
+          </button>
+          <button class="btn" type="button" id="btnSms" aria-label="문자 보내기">
+            <span class="icon" aria-hidden="true">💬</span>문자 보내기
+          </button>
 
-        <button class="btn" onclick="sms()">
-          💬 문자
-        </button>
+          <button class="btn secondary" type="button" id="btnMail" aria-label="이메일 보내기">
+            <span class="icon" aria-hidden="true">✉️</span>이메일
+          </button>
+          <button class="btn secondary" type="button" id="btnMap" aria-label="지도 보기">
+            <span class="icon" aria-hidden="true">📍</span>지도 보기
+          </button>
 
-        <button class="btn" onclick="kakao()">
-          💛 카카오톡
-        </button>
+          <button class="btn youtube" type="button" id="btnYt" aria-label="유튜브 바로가기">
+            <span class="icon" aria-hidden="true">▶️</span>YouTube | 쌈뽕뷰 (SSAMBBONGVIEW)
+          </button>
+        </div>
 
-        <button class="btn" onclick="email()">
-          ✉️ 이메일
-        </button>
+        <div class="info" aria-label="연락처 정보">
+          <div class="row"><div class="k">📱</div><div class="v"><strong>010-4664-7802</strong></div></div>
+          <div class="row"><div class="k">✉️</div><div class="v">stender78@naver.com</div></div>
+          <div class="row"><div class="k">📍</div><div class="v">경기도 여주시 세종대왕면 내양2길 30-1</div></div>
+          <div class="row"><div class="k">▶️</div><div class="v">쌈뽕뷰 (SSAMBBONGVIEW)</div></div>
+        </div>
 
-        <button class="btn" onclick="youtube()">
-          ▶️ 유튜브
-        </button>
-      </div>
-    </div>
+        <div class="tools" aria-label="추가 기능">
+          <button class="toolBtn" type="button" id="btnShare">카톡/메신저 공유</button>
+          <button class="toolBtn" type="button" id="btnCopyLink">링크 복사</button>
+          <button class="toolBtn" type="button" id="btnAddContact">연락처 저장(vCard)</button>
+        </div>
 
-    <!-- 상세 정보 -->
-    <div class="section">
-      <h2>📍 주소</h2>
-      <div class="info">
-        경기도 여주시 세종대왕면 내양2길 30-1
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>📞 연락처</h2>
-      <div class="info">
-        010-4664-7802<br>
-        stender78@naver.com
-      </div>
-    </div>
-
-    <div class="footer">
-      홈 화면에 추가하면 앱처럼 사용 가능합니다
-    </div>
+        <div class="foot">
+          © 여주드론 · YOON DAEHEON · Digital Business Card
+        </div>
+      </section>
+    </main>
   </div>
 
-  <!-- 기능 -->
   <script>
-    function call() {
-      location.href = "tel:01046647802";
+    // ====== 사용자 정보 (여기만 바꾸면 전체 반영) ======
+    const data = {
+      name: "윤대헌",
+      title: "대표",
+      company: "여주드론",
+      phone_display: "010-4664-7802",
+      phone_tel: "01046647802",
+      email: "stender78@naver.com",
+      address_kor: "경기도 여주시 세종대왕면 내양2길 30-1",
+      map_query: "경기도 여주시 세종대왕면 내양2길 30-1",
+      youtube_handle: "SSAMBBONGVIEW",
+      // GitHub Pages 올린 뒤, 아래 이미지 파일을 같은 폴더에 넣고 이 값만 바꾸면 공유 미리보기용으로 활용 가능
+      // 예: https://yourname.github.io/card/card.png
+      shareImageUrl: ""
+    };
+
+    // ====== 유틸 ======
+    function openUrl(url){
+      window.location.href = url;
     }
-    function sms() {
-      location.href = "sms:01046647802";
+    function encodeQS(s){ return encodeURIComponent(s); }
+
+    // ====== 버튼 동작 ======
+    document.getElementById("btnCall").addEventListener("click", () => {
+      openUrl(`tel:${data.phone_tel}`);
+    });
+
+    document.getElementById("btnSms").addEventListener("click", () => {
+      // iOS/Android 호환: sms:번호?body=...
+      const body = `${data.company} ${data.name} ${data.title}입니다.`;
+      openUrl(`sms:${data.phone_tel}?&body=${encodeQS(body)}`);
+    });
+
+    document.getElementById("btnMail").addEventListener("click", () => {
+      const subject = `${data.company} 디지털 명함 문의`;
+      const body = `${data.company} ${data.name} ${data.title}입니다.\n\n문의 내용:\n`;
+      openUrl(`mailto:${data.email}?subject=${encodeQS(subject)}&body=${encodeQS(body)}`);
+    });
+
+    document.getElementById("btnMap").addEventListener("click", () => {
+      // 구글 지도 쿼리 링크 (모바일에서 지도앱으로 잘 연결됨)
+      openUrl(`https://maps.google.com/?q=${encodeQS(data.map_query)}`);
+    });
+
+    document.getElementById("btnYt").addEventListener("click", () => {
+      openUrl(`https://www.youtube.com/@${data.youtube_handle}`);
+    });
+
+    // ====== 공유 ======
+    document.getElementById("btnShare").addEventListener("click", async () => {
+      const url = window.location.href;
+      const text = `여주드론 윤대헌 대표 디지털 명함입니다. (버튼을 누르면 바로 연결됩니다)`;
+      try{
+        if(navigator.share){
+          await navigator.share({ title: `${data.company} 디지털 명함`, text, url });
+        }else{
+          await navigator.clipboard.writeText(url);
+          alert("공유 기능이 없어 링크를 복사했어요.");
+        }
+      }catch(e){
+        // 사용자가 공유 취소해도 에러로 들어올 수 있음 → 조용히 처리
+      }
+    });
+
+    // ====== 링크 복사 ======
+    document.getElementById("btnCopyLink").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        alert("링크를 복사했어요.");
+      }catch(e){
+        prompt("복사해서 사용하세요:", window.location.href);
+      }
+    });
+
+    // ====== vCard 생성(연락처 저장) ======
+    function downloadVCard(){
+      const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+N:${data.name};;;;
+FN:${data.name}
+ORG:${data.company}
+TITLE:${data.title}
+TEL;TYPE=CELL:${data.phone_display}
+EMAIL:${data.email}
+ADR;TYPE=WORK:;;${data.address_kor};;;; 
+URL:https://www.youtube.com/@${data.youtube_handle}
+END:VCARD`.replace(/\n/g, "\r\n");
+
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `${data.company}_${data.name}.vcf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
     }
-    function kakao() {
-      location.href = "https://open.kakao.com/";
-    }
-    function email() {
-      location.href = "mailto:stender78@naver.com";
-    }
-    function youtube() {
-      location.href = "https://www.youtube.com/@%EC%8C%88%EB%BD%95%EB%B7%B0";
+    document.getElementById("btnAddContact").addEventListener("click", downloadVCard);
+
+    // ====== OG 이미지 자동 설정(선택) ======
+    if(data.shareImageUrl){
+      const og = document.querySelector('meta[property="og:image"]');
+      if(og) og.setAttribute("content", data.shareImageUrl);
     }
   </script>
 </body>
